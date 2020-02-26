@@ -5,20 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainForm extends JFrame {
-
+public class ContactForm  extends JFrame {
     private JPanel rootPanel;
-    private JButton buttonNewContact;
-    private JButton buttonRemoveContact;
-    private JTable tableContacts;
+    private JTextField textName;
+    private JTextField textPhone;
+    private JButton buttonSave;
+    private JButton buttonCancel;
 
-    public MainForm(){
-        this.setContentPane(rootPanel);
+    public ContactForm(){
+        this.setContentPane(this.rootPanel);
         this.setSize(500, 250);
         this.setVisible(true);
 
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((dimension.width / 2) - getSize().width, (dimension.height / 2) - getSize().height);
+        this.setLocation((dimension.width / 2) - this.getSize().width, (dimension.height / 2) - this.getSize().height);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -26,19 +26,20 @@ public class MainForm extends JFrame {
     }
 
     private void setListeners(){
-        buttonNewContact.addActionListener(new ActionListener() {
+        buttonCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ContactForm();
+                new MainForm();
                 dispose();
             }
         });
 
-        buttonRemoveContact.addActionListener(new ActionListener() {
+        buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
     }
+
 }

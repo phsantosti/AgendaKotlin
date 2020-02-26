@@ -52,8 +52,8 @@ public class ContactForm  extends JFrame {
 
                     new MainForm();
                     dispose();
-                }catch (Exception excepetion){
-                    JOptionPane.showMessageDialog(new JFrame(), excepetion.getMessage());
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(new JFrame(), exception.getMessage());
                 }
             }
         });

@@ -12,6 +12,7 @@ class ContactRepository {
         }
 
         fun delete(contact: ContactEntity){
+        //contactList.remove(contact);
 
             var index = 0
             for(item in contactList.withIndex()){

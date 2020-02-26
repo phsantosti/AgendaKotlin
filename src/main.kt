@@ -1,4 +1,4 @@
-import Views.MainForm
+import ui.MainForm
 
 fun main() {
     MainForm();

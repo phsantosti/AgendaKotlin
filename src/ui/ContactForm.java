@@ -1,5 +1,7 @@
 package ui;
 
+import business.ContactBusiness;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,17 +14,22 @@ public class ContactForm  extends JFrame {
     private JButton buttonSave;
     private JButton buttonCancel;
 
+    private ContactBusiness contactBusiness;
+
     public ContactForm(){
-        this.setContentPane(this.rootPanel);
-        this.setSize(500, 250);
-        this.setVisible(true);
+        setContentPane(rootPanel);
+        setSize(500, 250);
+        setVisible(true);
 
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((dimension.width / 2) - this.getSize().width, (dimension.height / 2) - this.getSize().height);
+        setLocation((dimension.width / 2) - getSize().width, (dimension.height / 2) - getSize().height);
 
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        this.setListeners();
+        contactBusiness = new ContactBusiness();
+        setListeners();
+
+
     }
 
     private void setListeners(){
@@ -37,7 +44,17 @@ public class ContactForm  extends JFrame {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    String name = textName.getText();
+                    String phone = textPhone.getText();
 
+                    contactBusiness.save(name, phone);
+
+                    new MainForm();
+                    dispose();
+                }catch (Exception excepetion){
+                    JOptionPane.showMessageDialog(new JFrame(), excepetion.getMessage());
+                }
             }
         });
     }
